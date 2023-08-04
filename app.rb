@@ -14,12 +14,25 @@ response_obj = JSON.parse(response)
 erb(:home)
 end
 
+get("/:symbols") do
+url = "https://api.exchangerate.host/symbols"
+uri = URI(url)
+response = Net::HTTP.get(uri)
+response_obj = JSON.parse(response)
+@symbols = response_obj.fetch("symbols")
+erb(:convert_usd)
+end
 
-get("/USD") do
+get("/:from/:to") do
   convert_url  = "https://api.exchangerate.host/convert?from=USD&to=EUR"
   convert_uri = URI(convert_url)
   convert_response = Net::HTTP.get(convert_uri)
   conv_response_obj = JSON.parse(convert_response)
-  @currency = conv_response_obj.fetch("query")
-  erb(:covert)
+  currency = conv_response_obj.fetch("query")
+  @from = currency.fetch("from")
+  @to = currency.fetch("to")
+  info = conv_response_obj.fetch("info")
+  @rate = info.fetch("rate")
+
+  erb(:convert)
 end
