@@ -1,16 +1,14 @@
 
 <body>
 
-
-<h1>Convert <%= @from %> </h1>
-
-
-
-<p>1 <%= @from %> equals <%= @result %> <%= @to %></p>
-
+<h1>Convert <%= params.fetch(:from) %> </h1>
 
 <p>Go <a href="/">back</a>.</p>
 
-  
+<ul><% @symbols.each do |key| %>
+    <li><a href="/<%= params.fetch(:from) %>/<%= key %>"> Convert  1 <%= params.fetch(:from) %> to <%= key %> </a></li>
+  <% end %>
+</ul>
+
 
 </body>

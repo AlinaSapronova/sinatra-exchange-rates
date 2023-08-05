@@ -1,0 +1,8 @@
+<body>
+    <h1>Convert  <%= params.fetch(:from) %> to <%= params.fetch(:to) %></h1>
+<%=@result%>
+<p>1 <%= params.fetch(:from) %> equals <%= @rate %> <%= params.fetch(:to) %>.</p>
+
+<p>Go <a href="/<%= params.fetch(:from) %>">back</a>.</p>
+
+</body>

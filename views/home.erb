@@ -1,15 +1,9 @@
 <body>
     <h1>Currency pairs</h1>
 
-<ul>
-  
-    <li><a href="/USD"> Convert 1 USD to... </a></li>
-    <li><a href="/INR"> Convert 1 INR to... </a></li>
-    <li><a href="/KES"> Convert 1 KES to... </a></li>
-</ul>
 
- <ul><% @symbols.each do |key,value| %>
-    <li><a href="/:from/:to"> Convert  1  <%= key %>  to... </a></li>
+ <ul><% @symbols.each do |key| %>
+    <li><a href="/<%= key %>"> Convert  1  <%= key %>  to... </a></li>
   <% end %>
   </ul>
 
